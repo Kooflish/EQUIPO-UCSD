@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repositorio - Equipo de Investigación UCSD</title>
+  <style>
+    /* Estilos base */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0 20px;
+      background-color: #f9f9f9;
+      color: #222;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    #search {
+      padding: 6px 10px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      flex-grow: 1;
+      max-width: 300px;
+      margin: 10px 10px 10px 0;
+    }
+
+    #theme-toggle {
+      background: none;
+      border: 1px solid #333;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    #theme-toggle:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    main {
+      margin: 20px 0;
+      max-width: 900px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .acciones {
+      margin-top: 10px;
+    }
+
+    .acciones a {
+      text-decoration: none;
+      background-color: #4e73df;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 4px;
+      display: inline-block;
+      transition: background-color 0.3s;
+    }
+
+    .acciones a:hover {
+      background-color: #2e59d9;
+    }
+
+    /* Sección estadísticas */
+    .estadisticas {
+      margin: 40px 0;
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .estadisticas h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4e73df;
+      color: white;
+    }
+
+    /* Tema oscuro */
+    body.dark {
+      background-color: #121212;
+      color: #ddd;
+    }
+
+    body.dark header {
+      border-bottom-color: #444;
+    }
+
+    body.dark #search {
+      background-color: #222;
+      border-color: #555;
+      color: #ddd;
+    }
+
+    body.dark #theme-toggle {
+      border-color: #bbb;
+      color: #ddd;
+    }
+
+    body.dark #theme-toggle:hover {
+      background-color: #bbb;
+      color: #222;
+    }
+
+    body.dark .card {
+      background-color: #1e1e1e;
+      box-shadow: 0 1px 6px rgba(255,255,255,0.05);
+    }
+
+    body.dark .acciones a {
+      background-color: #6c7ae0;
+      color: #eee;
+    }
+
+    body.dark .acciones a:hover {
+      background-color: #4e5ecb;
+    }
+
+    body.dark .estadisticas {
+      background-color: #1e1e1e;
+      box-shadow: 0 1px 6px rgba(255,255,255,0.05);
+    }
+
+    body.dark table, body.dark th, body.dark td {
+      border-color: #555;
+    }
+
+    body.dark th {
+      background-color: #6c7ae0;
+    }
+  </style>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📂 Repositorio del Equipo de Investigación - UCSD</h1>
+    <input type="text" id="search" placeholder="🔍 Buscar documento o carpeta..." />
+    <button id="theme-toggle">🌗 Cambiar tema</button>
+  </header>
+
+  <main id="repo">
+    <section class="cards">
+      <article class="card" data-title="Resultados" data-area="Resultados" data-tags="excel,pdf">
+        <h2>Proyecto de Investigación</h2>
+        <p>Acceso a documentos principales.</p>
+        <div class="acciones">
+          <a href="https://drive.google.com/drive/folders/1N5QbjEheNJo_HPe0VHTbfPkd4KBjzDOw?usp=drive_link" target="_blank">Abrir carpeta</a>
+        </div>
+      </article>
+
+      <article class="card" data-title="ARTE Y DISEÑO PARA DOCUMENTOS 2025" data-area="ARTE Y DISEÑO PARA DOCUMENTOS 2025" data-tags="excel,pdf">
+        <h2>ARTE Y DISEÑO PARA DOCUMENTOS 2025</h2>
+        <p>Isotipos, portadas, hojas membretadas, diagramas y recursos visuales.</p>
+        <div class="acciones">
+          <a href="https://drive.google.com/drive/folders/1N5QbjEheNJo_HPe0VHTbfPkd4KBjzDOw?usp=drive_link" target="_blank">Abrir carpeta</a>
+        </div>
+      </article>
+
+      <article class="card" data-title="Resultados" data-area="Resultados" data-tags="excel,pdf">
+        <h2>Resultados</h2>
+        <p>Acceso a resultados recopilados. Aquí puedes consultar documentos, reportes y más información sin que el botón pierda la forma aunque este texto sea mucho más largo.</p>
+        <div class="acciones">
+          <a href="https://drive.google.com/drive/folders/1N5QbjEheNJo_HPe0VHTbfPkd4KBjzDOw?usp=drive_link" target="_blank">Abrir carpeta</a>
+        </div>
+      </article>
+
+      <article class="card" data-title="Resultados" data-area="Resultados" data-tags="excel,pdf">
+        <h2>Resultados</h2>
+        <p>Acceso a resultados recopilados. Aquí puedes consultar documentos, reportes y más información sin que el botón pierda la forma aunque este texto sea mucho más largo.</p>
+        <div class="acciones">
+          <a href="https://drive.google.com/drive/folders/1N5QbjEheNJo_HPe0VHTbfPkd4KBjzDOw?usp=drive_link" target="_blank">Abrir carpeta</a>
+        </div>
+      </article>
+
+      <article class="card" data-title="Resultados" data-area="Resultados" data-tags="excel,pdf">
+        <h2>Resultados</h2>
+        <p>Acceso a resultados recopilados. Aquí puedes consultar documentos, reportes y más información sin que el botón pierda la forma aunque este texto sea mucho más largo.</p>
+        <div class="acciones">
+          <a href="https://drive.google.com/drive/folders/1N5QbjEheNJo_HPe0VHTbfPkd4KBjzDOw?usp=drive_link" target="_blank">Abrir carpeta</a>
+        </div>
+      </article>
+
+      <article class="card" data-title="Resultados" data-area="Resultados" data-tags="excel,pdf">
+        <h2>Resultados</h2>
+        <p>Acceso a resultados recopilados. Aquí puedes consultar documentos, reportes y más información sin que el botón pierda la forma aunque este texto sea mucho más largo.</p>
+        <div class="acciones">
+          <a href="https://drive.google.com/drive/folders/1N5QbjEheNJo_HPe0VHTbfPkd4KBjzDOw?usp=drive_link" target="_blank">Abrir carpeta</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Tabla de estadísticas -->
+    <section class="estadisticas">
+      <h2>📊 Estadísticas del Repositorio</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Cantidad de Documentos</th>
+            <th>Última Actualización</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Proyectos</td>
+            <td>12</td>
+            <td>15 Agosto 2025</td>
+          </tr>
+          <tr>
+            <td>Resultados</td>
+            <td>30</td>
+            <td>20 Agosto 2025</td>
+          </tr>
+          <tr>
+            <td>Arte y Diseño</td>
+            <td>8</td>
+            <td>10 Agosto 2025</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Gráfico -->
+      <canvas id="statsChart" width="400" height="200"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Equipo de Investigación - UCSD</p>
+  </footer>
+
+  <script>
+    // Tema oscuro
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    // Chart.js - gráfico de barras
+    const ctx = document.getElementById('statsChart').getContext('2d');
+    const statsChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Proyectos', 'Resultados', 'Arte y Diseño'],
+        datasets: [{
+          label: 'Cantidad de Documentos',
+          data: [12, 30, 8],
+          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            precision: 0
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
